@@ -25,7 +25,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "libqasan.h"
 #include <sys/mman.h>
-#include <strings.h>
 
 #ifdef __x86_64__
 
@@ -210,7 +209,7 @@ void __libqasan_hotpatch(void) {
   HOTPATCH(memmem)
   #ifndef __BIONIC__
   HOTPATCH(bzero)
-  HOTPATCH(explicit_bzero)
+  //HOTPATCH(explicit_bzero)
   HOTPATCH(mempcpy)
   HOTPATCH(bcmp)
   #endif
