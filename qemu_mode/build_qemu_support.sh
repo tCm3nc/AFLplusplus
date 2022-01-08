@@ -359,6 +359,7 @@ if ! command -v "$CROSS" > /dev/null ; then
     make -C libcompcov && echo "[+] libcompcov ready"
     echo "[+] Building unsigaction ..."
     make -C unsigaction && echo "[+] unsigaction ready"
+    echo "bar"
     echo "[+] Building libqasan ..."
     make -C libqasan && echo "[+] unsigaction ready"
     echo "[+] Building qemu libfuzzer helpers ..."
@@ -373,6 +374,7 @@ else
   echo "[+] Building unsigaction ..."
   make -C unsigaction CC="$CROSS $CROSS_FLAGS" && echo "[+] unsigaction ready"
   echo "[+] Building libqasan ..."
+  echo "foo"
   make -C libqasan CC="$CROSS $CROSS_FLAGS" && echo "[+] unsigaction ready"
 fi
 
