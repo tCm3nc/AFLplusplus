@@ -25,6 +25,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "libqasan.h"
 #include <sys/mman.h>
+#include <strings.h>
 
 #ifdef __x86_64__
 
