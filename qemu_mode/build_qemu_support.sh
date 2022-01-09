@@ -329,7 +329,7 @@ else
 fi
 
 ORIG_CROSS="$CROSS"
-
+echo $ORIG_CROSS
 if [ "$ORIG_CROSS" = "" ]; then
   CROSS=$CPU_TARGET-linux-gnu-gcc
   if ! command -v "$CROSS" > /dev/null
@@ -354,6 +354,7 @@ fi
 
 if ! command -v "$CROSS" > /dev/null ; then
   if [ "$CPU_TARGET" = "$(uname -m)" ] ; then
+    export CC=clang
     echo "[+] Building afl++ qemu support libraries with CC=$CC"
     echo "[+] Building libcompcov ..."
     make -C libcompcov && echo "[+] libcompcov ready"
@@ -361,7 +362,7 @@ if ! command -v "$CROSS" > /dev/null ; then
     make -C unsigaction && echo "[+] unsigaction ready"
     echo "bar"
     echo "[+] Building libqasan ..."
-    make -C libqasan && echo "[+] unsigaction ready"
+    make -C libqasan && echo "[+] libqasan ready"
     echo "[+] Building qemu libfuzzer helpers ..."
     make -C ../utils/aflpp_driver
   else
@@ -375,7 +376,7 @@ else
   make -C unsigaction CC="$CROSS $CROSS_FLAGS" && echo "[+] unsigaction ready"
   echo "[+] Building libqasan ..."
   echo "foo"
-  make -C libqasan CC="$CROSS $CROSS_FLAGS" && echo "[+] unsigaction ready"
+  make -C libqasan CC="$CROSS $CROSS_FLAGS" && echo "[+] libqasan ready"
 fi
 
 echo "[+] All done for qemu_mode, enjoy!"
