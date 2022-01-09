@@ -362,7 +362,7 @@ if ! command -v "$CROSS" > /dev/null ; then
     make -C unsigaction && echo "[+] unsigaction ready"
     echo "bar"
     echo "[+] Building libqasan ..."
-    make -C libqasan && echo "[+] libqasan ready"
+    CC=clang CXX=clang++ make -C libqasan && echo "[+] libqasan ready"
     echo "[+] Building qemu libfuzzer helpers ..."
     make -C ../utils/aflpp_driver
   else
